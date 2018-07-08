@@ -1,0 +1,36 @@
+<table class="table table-sm table-hover">
+
+  <thead class="thead-dark">
+    <th scope="col" class="text-center"> Nome </th>
+    <th scope="col" class="text-center"> CPF </th>
+    <th scope="col" class="text-center"> Email Profissional </th>
+    <th scope="col" class="text-center"> Email Pessoal </th>
+    <th scope="col" class="text-center"> Celular </th>
+    <th scope="col" class="text-center"> Tel. Profissional </th>
+    <th scope="col" class="text-center"> Tel. Residencial </th>
+    <th scope="col" class="text-center"> EDITAR </th>
+    <th scope="col" class="text-center"> REMOVER </th>
+  </thead>
+
+  <tr *ngFor="let user of authService.usersList | paginate: { itemsPerPage: 5, currentPage: p }">
+
+    <td class="text-center"> {{ user.nome }} </td>
+    <td class="text-center"> {{ user.cpf }} </td>
+    <td class="text-center"> {{ user.email_pro || "não informado" }}</td>
+    <td class="text-center"> {{ user.email_pes || "não informado" }} </td>
+    <td class="text-center"> {{ user.tel_mob || "não informado" }} </td>
+    <td class="text-center"> {{ user.tel_pro || "não informado" }} </td>
+    <td class="text-center"> {{ user.tel_res || "não informado" }} </td>
+
+    <td class="table-info text-center" (click)="editUser(user)">
+      <i class="fas fa-user-edit"></i>
+    </td>
+
+    <td class="table-danger text-center" (click)="deleteUser(user)">
+      <i class="fas fa-user-slash"></i>
+    </td>
+  </tr>
+</table>
+
+<pagination-controls previousLabel="Anterior" nextLabel="Próximo" (pageChange)="p = $event">
+</pagination-controls>

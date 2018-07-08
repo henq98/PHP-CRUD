@@ -1,0 +1,53 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+  <div class="row">
+    <div class="col-7">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome" id="nome" required [(ngModel)]="authService.selectedUser.nome" maxlength="30">
+    </div>
+
+    <div class="col-5">
+      <label for="cpf">CPF</label>
+      <input type="text" class="form-control" name="cpf" id="cpf" required [(ngModel)]="authService.selectedUser.cpf" maxlength="11"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <label for="profissional">Email Profissional</label>
+      <input id="profissional" type="email" class="form-control" name="profissional" [(ngModel)]="authService.selectedUser.email_pro"
+        maxlength="40">
+    </div>
+
+    <div class="col-6">
+      <label for="pessoal">Email Pessoal</label>
+      <input id="pessoal" type="email" class="form-control" name="pessoal" [(ngModel)]="authService.selectedUser.email_pes" maxlength="40">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <label for="tel_mob">Celular</label>
+      <input id="tel_mob" type="text" class="form-control" name="tel_mob" maxlength="9" [(ngModel)]="authService.selectedUser.tel_mob"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+    </div>
+
+    <div class="col-4">
+      <label for="tel_pro">Telefone Profissional</label>
+      <input id="tel_pro" type="text" class="form-control" name="tel_pro" maxlength="9" [(ngModel)]="authService.selectedUser.tel_pro"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+    </div>
+
+    <div class="col-4">
+      <label for="tel_res">Telefone Residencial</label>
+      <input id="tel_res" type="text" class="form-control" name="tel_res" maxlength="9" [(ngModel)]="authService.selectedUser.tel_res"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Enviar</button>
+  <button type="button" class="btn btn-danger" (click)="resetForm(form)">Limpar</button>
+</form>
+
+
